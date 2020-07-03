@@ -1,0 +1,110 @@
+@import "variables";
+
+@mixin before-background-position {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+@mixin pre-title {
+    font-family: $main-font;
+    font-size: $font-size-lg;
+    line-height: $line-height-lg;
+    font-weight: $font-weight-bold;
+    color: $color-font-grey;
+}
+
+@mixin title {
+    font-family: $title-font;
+    font-size: $font-size-xl;
+    line-height: $line-height-xl;
+    font-weight: $font-weight-black;
+    color: $color-font-title;
+}
+
+@mixin content {
+    font-family: $main-font;
+    font-size: $font-size-md;
+    line-height: $line-height-md;
+    font-weight: $font-weight-light;
+    color: $color-font-black;
+}
+
+@mixin main-btn {
+    background-color: $color-action;
+    padding: $base * 4.5 $base * 13.5 $base * 4.5 $base * 13.5;
+    font-size: $font-size-md;
+    line-height: $line-height-md;
+    color: $color-white;
+    transition: $transition-delay;
+    border: none;
+    cursor: pointer;
+    
+    &:hover {
+        color: $color-action;
+        background-color: $color-white;
+    }
+}
+
+@mixin slider-btns($color, $color-active) {
+    margin-top: $base * 18;
+    display: flex;
+    justify-content: flex-end;
+    
+    &__next,
+    &__prev {
+        background-color: $color;
+        position: relative;
+        width: $base * 15;
+        height: $base * 15;
+        padding: 0;
+        border: none;
+        transition: $transition-delay;
+        cursor: pointer;
+        
+        &:hover {
+            background-color: $color-active;
+        }
+    }
+}
+
+@mixin nav-dots ($color) {
+    &-nav-container {
+        position: absolute;
+        margin-top: $base * 29;
+        
+        &__point {
+            background-color: $color;
+            padding: 0;
+            border: 0;
+            margin-right: $base * 10;
+            width: $base * 2.5;
+            height: $base * 2.5;
+            border-radius: $base * 2.5;
+            opacity: 0.4;
+            cursor: pointer;
+            
+            &.active {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+@mixin field ($flex-basis) {
+    margin-top: $base * 3.5;
+    flex-basis: $flex-basis;
+    background: none;
+    color: $color-white;
+    font-size: $font-size-lg;
+    line-height: $line-height-lg;
+    border: none;
+    border-bottom: solid 1px $color-white;
+    resize: none;
+    &::placeholder {
+        color: $color-font-grey;
+    }
+}

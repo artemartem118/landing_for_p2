@@ -1,0 +1,585 @@
+@import "variables";
+@import "mixins";
+
+/* <-- common --> */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body,
+html {
+    font-family: $main-font;
+}
+
+.wrapper {
+    padding: 0 $base * 5;
+}
+
+.container {
+    max-width: $base * 275;
+    margin: 0 auto;
+}
+
+button,
+input,
+textarea {
+    outline: none;
+}
+
+/* <-- / common --> */
+
+
+/*  <-- header -->  */
+
+.header {
+    padding-top: $base * 5;
+    padding-bottom: $base * 7;
+    background-color: $color-not-white;
+    
+    &-inner {
+        display: flex;
+    }
+    
+    &-logo {
+        display: flex;
+        flex-basis: 40%;
+        align-self: center;
+        
+        &__logo {
+            background-image: url("../assets/images/header-logo.svg");
+            width: $base * 10;
+            height: $base * 10;
+            margin-right: $base * 7;
+            align-self: center;
+        }
+        
+        &__title {
+            font-family: $title-font;
+            font-size: $base * 9;
+            line-height: $base * 12;
+            color: $color-action;
+            font-weight: $font-weight-black;
+        }
+    }
+    
+    &-content {
+        display: flex;
+        flex-direction: column;
+        flex-basis: 60%;
+        
+        &__contacts {
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: $base * 5;
+            
+            &-item {
+                display: flex;
+                justify-content: space-between;
+                
+                &__phone-svg {
+                    background: url("../assets/images/header-phone.svg") no-repeat;
+                    width: $base * 2.5;
+                    height: $base * 5;
+                }
+                
+                &__clock-svg {
+                    background: url("../assets/images/header-clock.svg") no-repeat;
+                    width: $base * 4.5;
+                    height: $base * 5;
+                }
+                
+                &__mail-svg {
+                    background: url("../assets/images/header-mail.svg") no-repeat;
+                    width: $base * 5.5;
+                    height: $base * 5;
+                }
+                
+                &__location-svg {
+                    background: url("../assets/images/header-location.svg") no-repeat;
+                    width: $base * 4;
+                    height: $base * 5;
+                }
+                
+                &__text {
+                    margin-left: $base * 4;
+                    font-size: $font-size-contacts;
+                    line-height: $line-height-sm;
+                }
+            }
+        }
+        
+        &__nav {
+            display: flex;
+            justify-content: space-between;
+            
+            &__link {
+                font-size: $font-size-sm;
+                font-weight: $font-weight-bold;
+                line-height: $line-height-sm;
+                letter-spacing: $base / 3;
+                color: $color-font-black;
+                text-decoration: none;
+                transition: $transition-delay;
+                
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
+
+/*  <-- / header -->  */
+
+
+/*  <-- slider -->  */
+
+.slider {
+    padding-top: $base * 42;
+    padding-bottom: $base * 30;
+    
+    min-height: $base * 168;
+    position: relative;
+    background: url("../assets/images/slider.jpg") 50% 50%;
+    background-size: cover;
+    
+    &::before {
+        @include before-background-position;
+        
+        background: rgba(0, 0, 0, 0.6);
+    }
+    
+    &-item {
+        
+        &__title {
+            padding-bottom: $base * 20;
+            font-family: $title-font;
+            font-size: $font-size-xl;
+            line-height: $line-height-xl;
+            font-weight: $font-weight-bold;
+            color: $color-white;
+        }
+        
+        &__btn {
+            @include main-btn;
+            
+        }
+    }
+    
+    @include nav-dots($color-white);
+    
+    &-btn-container {
+        @include slider-btns(rgba(229, 229, 229, 0.2), rgba(229, 229, 229, 0.4));
+        
+    }
+}
+
+/*  <-- / slider -->  */
+
+
+/*  <-- specialization -->  */
+
+.specialization {
+    background-color: $color-grey;
+    
+    &-title {
+        padding-top: $base * 35;
+        padding-bottom: $base * 25;
+        
+        &__services {
+            @include pre-title;
+            
+        }
+        
+        &__we {
+            @include title;
+            
+            padding-top: $base * 10;
+        }
+    }
+    
+    &-content {
+        display: grid;
+        grid-template-rows: $base * 90 $base * 90;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: $base * 7.5;
+        padding-bottom: $base * 35;
+        
+        &-item {
+            position: relative;
+            background: url('../assets/images/specialization.jpg') 50% 50%;
+            background-size: cover;
+            display: flex;
+            cursor: pointer;
+            
+            &::before {
+                @include before-background-position;
+                
+                background: rgba(0, 0, 0, 0.65);
+                transition: $transition-delay;
+            }
+            
+            &:hover {
+                &::before {
+                    background: rgba(0, 95, 163, 0.65);
+                }
+            }
+            
+            &__title {
+                position: relative;
+                align-self: flex-end;
+                font-size: $font-size-lg;
+                line-height: $line-height-lg;
+                font-weight: $font-weight-bold;
+                color: $color-white;
+                padding: $base * 11.3;
+            }
+        }
+    }
+}
+
+/*  <-- / specialization -->  */
+
+
+/* <!-- company --> */
+
+.company {
+    padding-bottom: $base * 35;
+    padding-top: $base * 35;
+    background-color: $color-not-white;
+    
+    &-about-as {
+        @include pre-title;
+        
+    }
+    
+    &-wrapper {
+        display: flex;
+        height: $base * 135;
+        
+    }
+    
+    &-ivanov {
+        flex-basis: 50%;
+        padding-top: $base * 10;
+        padding-right: $base * 31;
+        
+        &__title,
+        &__subtitle {
+            @include title;
+            
+        }
+        
+        &__subtitle {
+            color: $color-action;
+        }
+        
+        &__content {
+            @include content;
+            
+            padding-top: $base * 15;
+        }
+    }
+    
+    &-cases {
+        flex-basis: 50%;
+        display: grid;
+        grid-template-columns: $base * 63 $base * 63;
+        grid-template-rows: $base * 63 $base * 63;
+        grid-gap: $base * 8;
+        
+        &-item {
+            background-color: $color-grey;
+            padding: $base * 8 0 $base * 10 $base * 10;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: $transition-delay;
+            cursor: pointer;
+            
+            &:hover {
+                background-color: $color-action;
+                color: $color-white;
+                
+                .company-cases-item__link {
+                    color: $color-white;
+                }
+            }
+            
+            &__count {
+                font-size: $font-size-xl;
+                line-height: $line-height-xl;
+                font-weight: $font-weight-black;
+                letter-spacing: 0.1em;
+            }
+            
+            &__title {
+                font-size: $font-size-sm;
+                line-height: $line-height-sm;
+                font-weight: $font-weight-bold;
+            }
+            
+            &__link {
+                font-size: $font-size-sm;
+                line-height: $line-height-sm;
+                font-weight: $font-weight-bold;
+                color: $color-action;
+            }
+        }
+    }
+}
+
+/* <!-- / company --> */
+
+
+/* <!-- customers --> */
+
+.customers {
+    background-color: $color-grey;
+    padding-top: $base * 30;
+    padding-bottom: $base * 30;
+    
+    &-our {
+        @include pre-title;
+        
+    }
+    
+    &-title {
+        @include title;
+        
+        padding-top: $base * 10;
+    }
+    
+    &-slider-container {
+        padding-top: $base * 20;
+        
+        &__content {
+            background: url("../assets/images/costomers-microsoft.png") space center;
+            background-size: 25%;
+            width: 100%;
+            height: $base * 32;
+        }
+    }
+    
+    @include nav-dots($color-action);
+    
+    &-slider-btns {
+        @include slider-btns(rgba(0, 95, 163, 0.2), $color-action);
+        
+    }
+}
+
+/* <!-- / customers --> */
+
+
+/* <!-- reviews --> */
+
+.reviews {
+    background-color: $color-not-white;
+    padding-top: $base * 45;
+    padding-bottom: $base * 45;
+    
+    &-pre-title {
+        @include pre-title;
+    }
+    
+    &-title {
+        @include title;
+        
+        padding-top: $base * 10;
+        padding-bottom: $base * 20;
+    }
+    
+    &-slider-container {
+        background: $color-grey;
+        padding: $base * 10 $base * 23 $base * 10 $base * 23;
+        
+        &__content {
+            font-size: $font-size-md;
+            line-height: $line-height-md;
+            font-weight: $font-weight-light;
+        }
+        
+        &__user {
+            display: flex;
+            padding-top: $base * 15;
+            
+            &__avatar {
+                width: $base * 20;
+                height: $base * 20;
+                background: url("../assets/images/reviews-ava.jpg") 50% 0;
+                background-size: cover;
+                border-radius: $base * 20;
+            }
+            
+            &-name {
+                padding-left: $base * 8;
+                align-self: center;
+                
+                &__name {
+                    font-size: $font-size-md;
+                    line-height: $line-height-md;
+                    font-weight: $font-weight-bold;
+                }
+                
+                &__position {
+                    padding-top: $base * 2;
+                    font-size: $font-size-sm;
+                    line-height: $line-height-sm;
+                    font-weight: $font-weight-normal;
+                    color: $color-font-black;
+                }
+            }
+        }
+    }
+    
+    @include nav-dots($color-action);
+    
+    &-slider-btns {
+        @include slider-btns(rgba(0, 95, 163, 0.2), $color-action);
+        
+    }
+}
+
+/* <!-- / reviews --> */
+
+
+/* <!-- feedback --> */
+
+.feedback {
+    position: relative;
+    background: url("../assets/images/slider.jpg") 50% 50%;
+    background-size: cover;
+    padding-top: $base * 30;
+    padding-bottom: $base * 35;
+    
+    &::before {
+        @include before-background-position;
+        
+        background: rgba(0, 0, 0, 0.8);
+    }
+    
+    &-wrapper {
+        position: relative;
+        display: flex;
+        color: $color-white;
+    }
+    
+    &-col1 {
+        flex-basis: 50%;
+        padding-right: $base * 25;
+        
+        &__title {
+            font-family: $title-font;
+            font-size: $font-size-xl;
+        }
+        
+        &__text {
+            padding-top: $base * 11;
+            font-size: $font-size-md;
+            line-height: $line-height-md;
+            font-weight: $font-weight-light;
+        }
+        
+        &__contacts {
+            padding-top: $base * 15;
+            display: flex;
+            justify-content: space-between;
+            
+            &-svg {
+                padding-right: $base * 4;
+            }
+            
+            &-phone {
+                display: flex;
+                align-items: center;
+            }
+            
+            &-mail {
+                display: flex;
+                align-items: center;
+            }
+        }
+    }
+    
+    &-col2 {
+        flex-basis: 50%;
+        display: flex;
+        flex-direction: column;
+        font-size: $font-size-sm;
+        line-height: $line-height-sm;
+        
+        &-name {
+            display: flex;
+            
+            &__first-name,
+            &__list-name {
+                flex-basis: 50%;
+                display: flex;
+                flex-direction: column;
+                
+                
+                input {
+                    @include field($base * 9)
+                }
+                
+            }
+            
+            &__first-name {
+                padding-right: $base * 7.5;
+            }
+            
+            &__last-name {
+            
+            }
+        }
+        
+        &-message {
+            display: flex;
+            flex-direction: column;
+            margin-top: $base * 9;
+            
+            textarea {
+                @include field($base * 25)
+            }
+        }
+        
+        &-btn {
+            @include main-btn;
+            
+            margin-top: $base * 12.5;
+            width: 50%;
+            align-self: flex-end;
+            white-space: nowrap;
+        }
+    }
+}
+
+/* <!-- / feedback --> */
+
+
+/* <!-- footer --> */
+
+.footer {
+    padding-bottom: $base * 12;
+    padding-top: $base * 10;
+    &-wrapper {
+        display: flex;
+        justify-content: space-between;
+        &__copyright {
+            font-size: $font-size-sm;
+            line-height: $line-height-sm;
+        }
+        &__author {
+            font-size: $font-size-sm;
+            line-height: $line-height-sm;
+        }
+    }
+}
+
+/* <!-- / footer --> */
+
