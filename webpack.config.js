@@ -2,6 +2,7 @@ const path = require('path')
 const TerserWebpackPlugin = require('terser-webpack-plugin')
 const OptimizeCSSAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin')
 const webpack = require('webpack')
@@ -69,6 +70,12 @@ module.exports = {
             $: 'jquery',
             jQuery: 'jquery',
             'window.jQuery': 'jquery'
+        }),
+        new CopyWebpackPlugin({
+            patterns: [{
+                from: path.resolve(__dirname, 'src/favicon.ico'),
+                to: path.resolve(__dirname, 'dist')
+            }]
         }),
         new HTMLWebpackPlugin({
             template: './index.html',

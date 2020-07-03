@@ -33,9 +33,9 @@
     color: $color-font-black;
 }
 
-@mixin main-btn {
+@mixin main-btn ($padd-left-right:$base * 13.5) {
     background-color: $color-action;
-    padding: $base * 4.5 $base * 13.5 $base * 4.5 $base * 13.5;
+    padding: $base * 4.5 $padd-left-right $base * 4.5 $padd-left-right;
     font-size: $font-size-md;
     line-height: $line-height-md;
     color: $color-white;

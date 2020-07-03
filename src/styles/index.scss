@@ -79,32 +79,12 @@ textarea {
                 display: flex;
                 justify-content: space-between;
                 
-                &__phone-svg {
-                    background: url("../assets/images/header-phone.svg") no-repeat;
-                    width: $base * 2.5;
-                    height: $base * 5;
-                }
-                
-                &__clock-svg {
-                    background: url("../assets/images/header-clock.svg") no-repeat;
-                    width: $base * 4.5;
-                    height: $base * 5;
-                }
-                
-                &__mail-svg {
-                    background: url("../assets/images/header-mail.svg") no-repeat;
-                    width: $base * 5.5;
-                    height: $base * 5;
-                }
-                
-                &__location-svg {
-                    background: url("../assets/images/header-location.svg") no-repeat;
-                    width: $base * 4;
-                    height: $base * 5;
+                &:not(:last-child) {
+                    padding-right: $base;
                 }
                 
                 &__text {
-                    margin-left: $base * 4;
+                    margin-left: $base * 2;
                     font-size: $font-size-contacts;
                     line-height: $line-height-sm;
                 }
@@ -141,7 +121,6 @@ textarea {
     padding-top: $base * 42;
     padding-bottom: $base * 30;
     
-    min-height: $base * 168;
     position: relative;
     background: url("../assets/images/slider.jpg") 50% 50%;
     background-size: cover;
@@ -177,6 +156,13 @@ textarea {
     }
 }
 
+@media (max-width: $max-width-md) {
+    .slider {
+        padding-top: $base * 21;
+        padding-bottom: $base * 15;
+    }
+}
+
 /*  <-- / slider -->  */
 
 
@@ -184,10 +170,10 @@ textarea {
 
 .specialization {
     background-color: $color-grey;
+    padding-top: $base * 35;
+    padding-bottom: $base * 35;
     
     &-title {
-        padding-top: $base * 35;
-        padding-bottom: $base * 25;
         
         &__services {
             @include pre-title;
@@ -202,11 +188,11 @@ textarea {
     }
     
     &-content {
+        padding-top: $base * 25;
         display: grid;
-        grid-template-rows: $base * 90 $base * 90;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, $base * 90);
         grid-gap: $base * 7.5;
-        padding-bottom: $base * 35;
         
         &-item {
             position: relative;
@@ -241,6 +227,19 @@ textarea {
     }
 }
 
+@media (max-width: $max-width-md) {
+    .specialization {
+        padding-top: $base * 20;
+        padding-bottom: $base * 20;
+        &-content {
+            padding-top: $base * 18;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(3, $base * 90);
+    
+        }
+    }
+}
+
 /*  <-- / specialization -->  */
 
 
@@ -258,8 +257,6 @@ textarea {
     
     &-wrapper {
         display: flex;
-        height: $base * 135;
-        
     }
     
     &-ivanov {
@@ -294,7 +291,6 @@ textarea {
         &-item {
             background-color: $color-grey;
             padding: $base * 8 0 $base * 10 $base * 10;
-            position: relative;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -333,6 +329,20 @@ textarea {
     }
 }
 
+@media (max-width: $max-width-md) {
+    .company {
+        &-wrapper {
+            flex-direction: column;
+            align-content: center;
+            
+        }
+        
+        &-ivanov {
+            padding-bottom: $base * 5;
+        }
+    }
+}
+
 /* <!-- / company --> */
 
 
@@ -358,7 +368,7 @@ textarea {
         padding-top: $base * 20;
         
         &__content {
-            background: url("../assets/images/costomers-microsoft.png") space center;
+            background: url("../assets/images/costomers-microsoft.png") space no-repeat center;
             background-size: 25%;
             width: 100%;
             height: $base * 32;
@@ -526,7 +536,6 @@ textarea {
                 input {
                     @include field($base * 9)
                 }
-                
             }
             
             &__first-name {
@@ -549,12 +558,11 @@ textarea {
         }
         
         &-btn {
-            @include main-btn;
+            @include main-btn($base * 4.5);
             
             margin-top: $base * 12.5;
             width: 50%;
             align-self: flex-end;
-            white-space: nowrap;
         }
     }
 }
@@ -567,13 +575,16 @@ textarea {
 .footer {
     padding-bottom: $base * 12;
     padding-top: $base * 10;
+    
     &-wrapper {
         display: flex;
         justify-content: space-between;
+        
         &__copyright {
             font-size: $font-size-sm;
             line-height: $line-height-sm;
         }
+        
         &__author {
             font-size: $font-size-sm;
             line-height: $line-height-sm;
