@@ -1,5 +1,7 @@
 // scripts
 import './scripts/slider'
+import './scripts/form'
+import './scripts/burger'
 
 
 // css
